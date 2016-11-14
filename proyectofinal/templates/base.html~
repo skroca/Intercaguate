@@ -1,0 +1,12 @@
+{% load staticfiles %}
+
+<html>
+
+	<head>
+		<title>
+			IntercaGuate
+		</title>
+	</head>
+	<body>
+	</body>
+</html>

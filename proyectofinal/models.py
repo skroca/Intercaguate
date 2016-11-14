@@ -15,19 +15,17 @@ class Imagen(models.Model):
 	height_field= "height_field")
 	height_field = models.IntegerField(default=0)
 	width_field = models.IntegerField(default=0)
-	
+
 	def __unicode__(self):
 	    return self.titulo
 
 	def __str__(self):
 	    return self.titulo
-	
+
 	def __unicode__(self):
 	    return self.usuario
 
-	
-	
-	
+
 
 class Comentarios(models.Model):
 	id_comentario = models.ForeignKey(Imagen)
@@ -39,6 +37,3 @@ class Comentarios(models.Model):
 
 	def __str__(self):
 	    return self.comentario
-	
-	
-       

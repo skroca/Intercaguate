@@ -124,3 +124,7 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn")
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static_cdn")
 STATICFILES_DIRS = [os.path.join(BASE_DIR,"static"),]
 
+LOGIN_REDIRECT_URL ="/Inicio/"
+LOGIN_URL='/'
+APPEND_SLASH = False
+

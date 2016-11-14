@@ -8,4 +8,6 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('proyectofinal.urls')),
+    url(r'^peli/', include('peliculas.urls')),
+
 ]
