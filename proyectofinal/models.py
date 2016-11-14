@@ -9,6 +9,7 @@ def upload_location(instance,filename):
 class Imagen(models.Model):
 	usuario = models.ForeignKey(settings.AUTH_USER_MODEL,default=1)
 	titulo = models.CharField(max_length =50)
+	descripcion = models.TextField()
 	fecha_pub = models.DateTimeField(auto_now=False, auto_now_add= False)
 	img = models.ImageField(upload_to=upload_location,null=True,blank=True,width_field="width_field",
 	height_field= "height_field")

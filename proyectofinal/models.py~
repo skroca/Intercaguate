@@ -24,8 +24,7 @@ class Imagen(models.Model):
 	def __unicode__(self):
 	    return self.usuario
 
-	def __str__(self):
-	    return self.usuario
+	
 	
 	
 

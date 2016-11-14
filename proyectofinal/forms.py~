@@ -6,7 +6,7 @@ class UsuarioForm(forms.ModelForm):
 
 	class Meta:
 		model = Us
-		fields = ["usuario","img","nombre"]
+		fields = ["img","nombre"]
 
 class Tw(forms.ModelForm):
 

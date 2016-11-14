@@ -4,7 +4,7 @@ from proyectofinal.models import Comentarios
 
 
 class PostImagen(admin.ModelAdmin):
-    list_display= ["usuario","img","titulo","fecha_pub"]
+    list_display= ["usuario","img","titulo","fecha_pub","descripcion"]
     list_display_links= ["titulo"]
     list_filter= ["usuario"]
     search_fields= ["usuario","titulo"]
