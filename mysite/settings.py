@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'proyectofinal',
+    'peliculas',	
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,6 +84,21 @@ DATABASES = {
     }
 }
 
+AUTH_PASSWORD_VALIDATORS = [
+    {
+	'NAME': 'django.contribu.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+	'NAME': 'django.contribu.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+	'NAME': 'django.contribu.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+	'NAME': 'django.contribu.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -101,4 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+MEDIA_URL =  '/media/'
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn")
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static_cdn")
+STATICFILES_DIRS = [os.path.join(BASE_DIR,"static"),]
+
