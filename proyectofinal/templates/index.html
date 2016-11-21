@@ -16,15 +16,18 @@
 <div align = "center">
 {% for obj in object_list %}
 
-          {% if us.get_full_name%}
-          <small>{{obj.user.get_full_name}}&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
-          {% endif%}
+          {% if us.get_full_name %}
+          <h1>{{obj.user.get_full_name}}</h1>&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
+          {% endif %}
           {% if us.is_superuser %}
+
             <div align = "right">
 
-          <a href="http://127.0.0.1:8000/editar/{{obj.id}}/"><input  type='button' value = "Editar"/></a>
+          <a href="http://skroca.pythonanywhere.com/editar/{{obj.id}}/"><input  type='button' value = "Editar"/></a>
         </div>
         {% endif %}
+        <h1>{{obj.user.get_full_name}}</h1>&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
+
           <h2 ><a href="{{obj.get_absolute_url}}">{{obj.titulo}} </a></h2>
           <h> {{obj.descripcion|linebreaks|truncatechars:130}} </h>
           {% if obj.img %}
