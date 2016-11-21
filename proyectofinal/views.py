@@ -37,8 +37,9 @@ def registro(request):
 
 def inicio(request):
 	queryset_list = Imagen.objects.all().order_by("-fecha_pub")
-	usuario = request.user
+
 	if request.user.is_authenticated():
+		usuario = request.user
 		info = { "titulo": "IntercaGuate",  "object_list":queryset_list, "us": usuario}
 	else:
 		info = { "titulo": "Inicie sesión para continuar"}
