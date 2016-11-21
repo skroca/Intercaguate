@@ -42,9 +42,6 @@ class Comentarios(models.Model):
 	def __str__(self):
 	    return self.comentario
 
-
-
-
 	def get_absolute_url(self):
 
 		return reverse("detail", kwargs={"id": self.id})

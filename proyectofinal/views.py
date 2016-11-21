@@ -1,9 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Imagen
-from .models import Comentarios
-from .forms import ImagenForm, ImagenEditar
-from .forms import ComentarioForm
-from .forms import Login
+from .models import Imagen, Comentarios
+from .forms import ImagenForm, ImagenEditar, ComentarioForm, Login
 from django.utils import timezone
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -29,7 +26,7 @@ def registro(request):
 			user.first_name = first_name
 			user.last_name = last_name
 			user.is_staff = True
-			user.is_superuser = True
+			user.is_superuser = False
 			user.save()
 			return HttpResponseRedirect(reverse('Login'))
 	else:

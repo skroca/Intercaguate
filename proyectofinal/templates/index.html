@@ -4,9 +4,10 @@
  	{% csrf_token %}
 
 
+{% if us.is_authenticated %}
 
 <a href="/imagen/nuevo/"><input  type='button' value = "Nuevo InstaGuate"/></a>
-
+{% endif %}
 {% for obj in object_list %}
 
 {% endfor %}
