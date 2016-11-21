@@ -7,8 +7,9 @@ from . import views
 
 urlpatterns = [
         url(r'^admin/$', admin.site.urls),
- 	url(r'^$', views.inicio, name = "Inicio"),
+
  	url(r'^login/$', roca.login, name='Login'),
+    url(r'^$', views.inicio, name = "Inicio"),
  	#url(r'^logout/$', roca.logout, name='Logout'),
 	url(r'^registro/$', views.registro, name ="Registro"),
     url(r'^(?P<id>\d+)/', views.detalle, name ="detail"),
