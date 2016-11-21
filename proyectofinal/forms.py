@@ -14,7 +14,13 @@ class ImagenForm(forms.ModelForm):
 
 	class Meta:
 		model = Imagen
-		fields = ["img","titulo","usuario","descripcion",]
+		fields = ["img","titulo","descripcion"]
+
+class ImagenEditar(forms.ModelForm):
+
+	class Meta:
+		model = Imagen
+		fields = ["titulo","descripcion"]
 
 class ComentarioForm(forms.ModelForm):
 
@@ -22,5 +28,3 @@ class ComentarioForm(forms.ModelForm):
 
 		model = Comentarios
 		fields = ["comentario"]
-
-

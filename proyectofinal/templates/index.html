@@ -2,29 +2,46 @@
 {% block content %}
 
  	{% csrf_token %}
+
+
+
+<a href="/imagen/nuevo/"><input  type='button' value = "Nuevo InstaGuate"/></a>
+
 {% for obj in object_list %}
 
-          {% if obj.user.get_full_name%}
+{% endfor %}
+<a style="align:right;padding-left:10cm; font-size:20px">Pubicaciones hasta hoy</a>
+
+<div align = "center">
+{% for obj in object_list %}
+
+          {% if us.get_full_name%}
           <small>{{obj.user.get_full_name}}&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
           {% endif%}
+          {% if us.is_superuser %}
+            <div align = "right">
+
+          <a href="http://127.0.0.1:8000/editar/{{obj.id}}/"><input  type='button' value = "Editar"/></a>
+        </div>
+        {% endif %}
           <h2 ><a href="{{obj.get_absolute_url}}">{{obj.titulo}} </a></h2>
           <h> {{obj.descripcion|linebreaks|truncatechars:130}} </h>
           {% if obj.img %}
           <p align="center"><img src='{{ obj.img.url}}' /></p><br>
- 
+
           <h> {{obj.comentarios|linebreaks|truncatechars:130}} </h>
+
           {% endif %}
-          
-          <p> 
-          
-          <div>
+
+          <p>
+
+          <div align = "center">
           <a href="{{obj.get_absolute_url}}" role="button">Ver Mas</a>
           </div><hr>
-      </div>
-    </div>
-  </div>
-</div>
+
+
 {% cycle "" "<div class='col-sm-8'><hr/></div><div class='row'></div>" %}
-    {% endfor %}
-      
+  {% endfor %}
+  </div>
+
 {% endblock content %}

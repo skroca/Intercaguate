@@ -2,4 +2,40 @@
 
 {% block head_title %}{{ instance.title }} | {{ block.super}}{% endblock head_title %}
 {% block content%}
-{% end block content %}
+        {% csrf_token %}
+        <div >
+          <h1>{{instance.titulo}}</h1>
+
+              <small>{{instance.user.get_full_name}}</small><br>
+              <small>{{instance.fecha_pub}}</small>
+
+              {% if instance.img%}
+             <img src='{{ instance.img.url}}'/>
+          {% endif %}
+
+            <hr>
+            <h> {{instance.descripcion|linebreaks}}</h>
+            <form  method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+
+    {{form.as_p}}
+    <input  type='submit' value = "Postear"/>
+    </form>
+    {% for ins in lista %}
+          <hr>
+          <p>{{ins.comentario|linebreaks}}</p>
+
+            <hr>
+
+            <h5>Actualizado: {{ins.fec_mod}}</h5>
+            <hr>
+            {% if us.is_superuser %}
+<a href="http://127.0.0.1:8000/eliminar/{{ins.id}}/"><input  type='button' value = "Eliminar"/></a>
+{% endif %}
+    {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+{% endblock content %}

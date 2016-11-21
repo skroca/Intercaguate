@@ -11,9 +11,12 @@ urlpatterns = [
  	url(r'^login/$', roca.login, name='Login'),
  	#url(r'^logout/$', roca.logout, name='Logout'),
 	url(r'^registro/$', views.registro, name ="Registro"),
+    url(r'^(?P<id>\d+)/', views.detalle, name ="detail"),
+    url(r'^editar/(?P<pk>\d+)/', views.editar, name ="detalle"),
+    url(r'^imagen/nuevo/$', views.imagen_nuevo, name ="imagen_nuevo"),
+    url(r'^eliminar/(?P<id>\d+)/', views.borrar, name ="eliminar"),
     ]
 
 if settings.DEBUG:
 	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-	

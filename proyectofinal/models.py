@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
-
+from django.core.urlresolvers import reverse
 
 def upload_location(instance,filename):
 	return "%s/%s" %(instance.id, filename,)
@@ -25,10 +25,14 @@ class Imagen(models.Model):
 	def __unicode__(self):
 	    return self.usuario
 
+	def get_absolute_url(self):
+		return reverse("detail", kwargs={"id": self.id})
+
 
 
 class Comentarios(models.Model):
 	id_comentario = models.ForeignKey(Imagen)
+
 	comentario = models.TextField()
 	fec = models.DateTimeField(default=timezone.now)
 	fec_mod = models.DateTimeField(auto_now=True, auto_now_add= False)
@@ -37,3 +41,10 @@ class Comentarios(models.Model):
 
 	def __str__(self):
 	    return self.comentario
+
+
+
+
+	def get_absolute_url(self):
+
+		return reverse("detail", kwargs={"id": self.id})
