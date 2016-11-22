@@ -1,50 +1,27 @@
 {% extends 'base.html' %}
+
 {% block content %}
-
- 	{% csrf_token %}
-
-
+{% csrf_token %}
 {% if us.is_authenticated %}
-
 <a href="/imagen/nuevo/"><input  type='button' value = "Nuevo InstaGuate"/></a>
 {% endif %}
+
 {% for obj in object_list %}
+
+    <h2><a href="{{obj.get_absolute_url}}">{{obj.titulo}} </a>
+      {% if us.is_superuser %}
+        <div style="text-align: right; margin-rigth: 10px;">
+          <a href="http://skroca.pythonanywhere.com/editar/{{obj.id}}/"><input style="algin:right"  type='button' value = "Editar"/></a>
+        </div>
+      {% endif %}
+    </h2>
+    {% if obj.img %}
+    <p><img src='{{ obj.img.url }}'/></p><br>
+    <h> {{obj.descripcion|linebreaks|truncatechars:130}} </h>
+
+    {% endif %}
+
 
 {% endfor %}
-<a style="align:right;padding-left:10cm; font-size:20px">Pubicaciones hasta hoy</a>
-
-<div align = "center">
-{% for obj in object_list %}
-
-          {% if us.get_full_name %}
-          <h1>{{us.get_full_name}}</h1>&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
-          {% endif %}
-          {% if us.is_superuser %}
-
-            <div align = "right">
-
-          <a href="http://skroca.pythonanywhere.com/editar/{{obj.id}}/"><input  type='button' value = "Editar"/></a>
-        </div>
-        {% endif %}
-        <h1>{{obj.user.get_full_name}}</h1>&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
-
-          <h2 ><a href="{{obj.get_absolute_url}}">{{obj.titulo}} </a></h2>
-          {% if obj.img %}
-          <p align="center"><img src='{{ obj.img.url}}' /></p><br>
-          <h> {{obj.descripcion|linebreaks|truncatechars:130}} </h>
-          <h> {{obj.comentarios|linebreaks|truncatechars:130}} </h>
-
-          {% endif %}
-
-          <p>
-
-          <div align = "center">
-
-          </div><hr>
-
-
-{% cycle "" "<div class='col-sm-8'><hr/></div><div class='row'></div>" %}
-  {% endfor %}
-  </div>
 
 {% endblock content %}

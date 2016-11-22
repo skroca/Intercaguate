@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
 
    {% block content %}
-       <h1>Editar Publicacion</h1>
+       <h2>Editar Publicacion</h2>
        <form method="POST" class="post-form">{% csrf_token %}
 
         <img src={{edi.img.url}}/>
-
-      
-
            {{ form.as_p }}
            <button type="submit" class="save btn btn-default">Guardar Cambios</button>
        </form>

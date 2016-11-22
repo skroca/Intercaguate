@@ -35,16 +35,18 @@ def registro(request):
 	info = { 'form': form,}
 	return render(request,"registro.html",info)
 
+@login_required(login_url='/login/')
 def inicio(request):
+	#return HttpResponseRedirect("/login/")
 	queryset_list = Imagen.objects.all().order_by("-fecha_pub")
 
 	if request.user.is_authenticated():
 		usuario = request.user
-		info = { "titulo": "IntercaGuate",  "object_list":queryset_list, "us": usuario}
+		info = { "titulo": "IntercaSecret",  "object_list":queryset_list, "us": usuario}
 	else:
 		info = { "titulo": "Inicie sesión para continuar"}
 	return render(request,"index.html", info)
-
+@login_required(login_url='/login/')
 def detalle(request, id=None):
 	instance = get_object_or_404(Imagen,id=id)
 
@@ -69,6 +71,7 @@ def detalle(request, id=None):
 	return render(request,"detalle.html",info2)
 
 def editar(request, pk):
+	us = request.user
 	edita = get_object_or_404(Imagen, pk=pk)
 	ins = Imagen.objects.all()
 	imagena= ins[edita.id -1]
@@ -82,13 +85,15 @@ def editar(request, pk):
 			return redirect("/")
 	else:
 		form = ImagenEditar(instance=edita)
-		infos ={"form": form,"edi":imagena}
+		infos ={"form": form,"edi":imagena,"us":us}
 	return render(request, 'editar.html', infos)
 
 
 def imagen_nuevo(request):
+	us = request.user
 	if request.method == "POST":
 		form = ImagenForm(request.POST or None, request.FILES or None)
+
 		if form.is_valid():
 			imagennuevo = form.save(commit=False)
 			imagennuevo.usuario = request.user
@@ -97,7 +102,7 @@ def imagen_nuevo(request):
 			return HttpResponseRedirect("/")
 	else:
 		form = ImagenForm()
-	return render(request, 'Publicacion.html', {'form': form})
+	return render(request, 'Publicacion.html', {'form': form,"us":us})
 def borrar(request, id):
 	borra = get_object_or_404(Comentarios,id=id)
 	inss= Comentarios.objects.filter(pk=id)

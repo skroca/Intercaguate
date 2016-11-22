@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
-{% block content %}
 
+{% block login %}
+<form method="post" action="{% url 'Login' %}">
+   {% csrf_token %}
+   <table>
+       <tr>
+           <td id='pub'>Usuario: </td>
+           <td id='cont'>{{ form.username }}</td>
+       </tr>
+       <tr>
+           <td id='pub'>{{ form.password.label_tag }}</td>
+           <td id='cont'>{{ form.password }}</td>
+       </tr>
+   </table>
+<input type="submit" value="Login" /><input type="hidden" name="next" value="{{ next }}"/>
+</form>
 
-
-			<form method="post" action="{% url 'Login' %}">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td id='pub'>{{ form.username.label_tag }}</td>
-                <td id='cont'>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td id='pub'>{{ form.password.label_tag }}</td>
-                <td id='cont'>{{ form.password }}</td>
-            </tr>
-        </table>
-
-        <input  type="submit" value="login"/> <input type="hidden" name="next" value="{{ next }}"/>
-    </form>
-{% endblock content %}
+{% endblock %}
