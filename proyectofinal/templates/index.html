@@ -17,7 +17,7 @@
 {% for obj in object_list %}
 
           {% if us.get_full_name %}
-          <h1>{{obj.user.get_full_name}}</h1>&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
+          <h1>{{us.get_full_name}}</h1>&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
           {% endif %}
           {% if us.is_superuser %}
 
@@ -29,10 +29,9 @@
         <h1>{{obj.user.get_full_name}}</h1>&nbsp;&nbsp;<small>{{obj.fecha_pub|timesince}}</small></small>
 
           <h2 ><a href="{{obj.get_absolute_url}}">{{obj.titulo}} </a></h2>
-          <h> {{obj.descripcion|linebreaks|truncatechars:130}} </h>
           {% if obj.img %}
           <p align="center"><img src='{{ obj.img.url}}' /></p><br>
-
+          <h> {{obj.descripcion|linebreaks|truncatechars:130}} </h>
           <h> {{obj.comentarios|linebreaks|truncatechars:130}} </h>
 
           {% endif %}
@@ -40,7 +39,7 @@
           <p>
 
           <div align = "center">
-          <a href="{{obj.get_absolute_url}}" role="button">Ver Mas</a>
+
           </div><hr>
 
 
